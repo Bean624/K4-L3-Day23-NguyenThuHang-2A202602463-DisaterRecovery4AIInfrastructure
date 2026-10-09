@@ -25,6 +25,7 @@ import pathlib
 import sys
 import time
 
+# pyrefly: ignore [missing-import]
 import httpx
 
 sys.path.insert(0, ".")

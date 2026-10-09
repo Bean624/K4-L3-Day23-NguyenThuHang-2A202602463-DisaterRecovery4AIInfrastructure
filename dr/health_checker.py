@@ -23,6 +23,7 @@ import json
 import pathlib
 import time
 
+# pyrefly: ignore [missing-import]
 import httpx
 
 URL = {"a": "http://127.0.0.1:8001", "b": "http://127.0.0.1:8002"}
