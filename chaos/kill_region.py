@@ -65,14 +65,23 @@ def is_alive(region: str, timeout=1.5) -> bool:
 
 def pid_of(region: str) -> int | None:
     f = PID_DIR / f"region-{region}.pid"
-    if not f.exists():
-        return None
-    pid = int(f.read_text().strip())
+    if f.exists():
+        try:
+            pid = int(f.read_text().strip())
+            os.kill(pid, 0)
+            return pid
+        except (ValueError, OSError):
+            pass
+    # Fallback cho Windows / Git Bash (nơi $! trong bash là MSYS pid khác Windows pid)
+    port = 8001 if region == "a" else 8002
     try:
-        os.kill(pid, 0)
-        return pid
-    except OSError:
-        return None
+        import psutil
+        for c in psutil.net_connections("tcp"):
+            if c.laddr and c.laddr.port == port and c.status == "LISTEN" and c.pid:
+                return c.pid
+    except Exception:
+        pass
+    return None
 
 
 def kill(region: str, mode: str, backend: str, force_both: bool, mock: bool):
@@ -96,7 +105,16 @@ def kill(region: str, mode: str, backend: str, force_both: bool, mock: bool):
         # netblock: SIGSTOP -> TCP handshake vẫn xong nhưng không ai trả lời => request TREO
         #           (đúng hành vi của iptables DROP ở tầng app)
         # stop    : SIGKILL -> cổng đóng => ConnectError ngay
-        os.kill(pid, signal.SIGSTOP if mode == "netblock" else signal.SIGKILL)
+        import sys
+        if sys.platform == "win32":
+            import psutil
+            proc = psutil.Process(pid)
+            if mode == "netblock":
+                proc.suspend()
+            else:
+                proc.kill()
+        else:
+            os.kill(pid, signal.SIGSTOP if mode == "netblock" else signal.SIGKILL)
     else:
         svc = f"serving-{region}"
         if mode == "stop":
@@ -111,7 +129,16 @@ def restore(region: str, backend: str):
     if backend == "bare":
         pid = pid_of(region)
         if pid:
-            os.kill(pid, signal.SIGCONT)
+            import sys
+            if sys.platform == "win32":
+                import psutil
+                try:
+                    proc = psutil.Process(pid)
+                    proc.resume()
+                except Exception:
+                    pass
+            else:
+                os.kill(pid, signal.SIGCONT)
             return event(action="restore", region=region, method="SIGCONT", pid=pid)
         return event(action="restore", region=region, method="need_manual_start",
                      note="process da bi SIGKILL, chay `make up-bare` lai")

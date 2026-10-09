@@ -1,0 +1,25 @@
+{"ts": 1791521328.8216577, "iso": "2026-10-09T04:48:48", "step": "1_verify_target", "target": "b", "state": {"region": "b", "pool_state": "warm"}}
+{"ts": 1791521328.824201, "iso": "2026-10-09T04:48:48", "step": "2_restore_snapshot", "target": "b", "backend": "fs", "rpo_seconds": null, "docs_lost": null, "embed_model_version": "test", "snapshot_meta": {"snapshot_at": 1791521328.8221703, "latest_doc_ts": 1791521328.8221703, "embed_model_version": "test"}}
+{"ts": 1791521328.8261557, "iso": "2026-10-09T04:48:48", "step": "3_scale_pool", "target": "b", "pool_state": "full"}
+{"ts": 1791521329.827296, "iso": "2026-10-09T04:48:49", "step": "4_wait_ready", "target": "b", "ok": false, "waited_s": 1.0, "error": "timeout"}
+{"ts": 1791521368.2106717, "iso": "2026-10-09T04:49:28", "step": "1_verify_target", "target": "b", "state": {"region": "b", "pool_state": "warm"}}
+{"ts": 1791521368.2136245, "iso": "2026-10-09T04:49:28", "step": "2_restore_snapshot", "target": "b", "backend": "fs", "rpo_seconds": null, "docs_lost": null, "embed_model_version": "test", "snapshot_meta": {"snapshot_at": 1791521368.2121236, "latest_doc_ts": 1791521368.2121236, "embed_model_version": "test"}}
+{"ts": 1791521368.2151225, "iso": "2026-10-09T04:49:28", "step": "3_scale_pool", "target": "b", "pool_state": "full"}
+{"ts": 1791521369.2166421, "iso": "2026-10-09T04:49:29", "step": "4_wait_ready", "target": "b", "ok": false, "waited_s": 1.0, "error": "timeout"}
+{"ts": 1791521550.9579005, "iso": "2026-10-09T04:52:30", "step": "1_verify_target", "target": "b", "state": {"region": "b", "pool_state": "full", "weights": false, "count": 0, "latest_doc_ts": null, "ts": 1791521550.9574015}}
+{"ts": 1791521550.9867454, "iso": "2026-10-09T04:52:30", "step": "2_restore_snapshot", "target": "b", "backend": "fs", "rpo_seconds": 6.0, "docs_lost": 3, "embed_model_version": "embed-model=vi-e5-base@v3", "snapshot_meta": {"snapshot_at": 1791521544.406307, "source_region": "a", "latest_doc_ts": 1791521544.3016658, "embed_model_version": "embed-model=vi-e5-base@v3", "restored_at": 1791521550.9842467}}
+{"ts": 1791521550.9872458, "iso": "2026-10-09T04:52:30", "step": "3_scale_pool", "target": "b", "pool_state": "full"}
+{"ts": 1791521551.207615, "iso": "2026-10-09T04:52:31", "step": "4_wait_ready", "target": "b", "ok": true, "waited_s": 0.22}
+{"ts": 1791521551.2081428, "iso": "2026-10-09T04:52:31", "step": "5_dns_cutover", "target": "b", "active_region": "b"}
+{"ts": 1791521770.4177263, "iso": "2026-10-09T04:56:10", "step": "1_verify_target", "target": "b", "state": {"region": "b", "pool_state": "warm"}}
+{"ts": 1791521770.4186423, "iso": "2026-10-09T04:56:10", "step": "2_restore_snapshot", "target": "b", "backend": "fs", "rpo_seconds": 44.04, "docs_lost": 22, "embed_model_version": "test", "snapshot_meta": {"snapshot_at": 1791521770.4177263, "latest_doc_ts": 1791521770.4177263, "embed_model_version": "test"}}
+{"ts": 1791521770.4192197, "iso": "2026-10-09T04:56:10", "step": "3_scale_pool", "target": "b", "pool_state": "full"}
+{"ts": 1791521771.4257185, "iso": "2026-10-09T04:56:11", "step": "4_wait_ready", "target": "b", "ok": false, "waited_s": 1.01, "error": "timeout"}
+{"ts": 1791522567.3640416, "iso": "2026-10-09T05:09:27", "step": "1_verify_target", "target": "b", "state": {"region": "b", "pool_state": "warm"}}
+{"ts": 1791522567.3655388, "iso": "2026-10-09T05:09:27", "step": "2_restore_snapshot", "target": "b", "backend": "fs", "rpo_seconds": 44.04, "docs_lost": 22, "embed_model_version": "test", "snapshot_meta": {"snapshot_at": 1791522567.3640416, "latest_doc_ts": 1791522567.3640416, "embed_model_version": "test"}}
+{"ts": 1791522567.3675368, "iso": "2026-10-09T05:09:27", "step": "3_scale_pool", "target": "b", "pool_state": "full"}
+{"ts": 1791522568.369025, "iso": "2026-10-09T05:09:28", "step": "4_wait_ready", "target": "b", "ok": false, "waited_s": 1.0, "error": "timeout"}
+{"ts": 1791522633.6904016, "iso": "2026-10-09T05:10:33", "step": "1_verify_target", "target": "b", "state": {"region": "b", "pool_state": "warm"}}
+{"ts": 1791522633.6914408, "iso": "2026-10-09T05:10:33", "step": "2_restore_snapshot", "target": "b", "backend": "fs", "rpo_seconds": 44.04, "docs_lost": 22, "embed_model_version": "test", "snapshot_meta": {"snapshot_at": 1791522633.6909018, "latest_doc_ts": 1791522633.6909018, "embed_model_version": "test"}}
+{"ts": 1791522633.691901, "iso": "2026-10-09T05:10:33", "step": "3_scale_pool", "target": "b", "pool_state": "full"}
+{"ts": 1791522634.6926305, "iso": "2026-10-09T05:10:34", "step": "4_wait_ready", "target": "b", "ok": false, "waited_s": 1.0, "error": "timeout"}
